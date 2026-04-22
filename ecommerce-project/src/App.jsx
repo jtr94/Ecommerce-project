@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {HomePage} from './pages/HomePage'
 import { Routes, Route } from 'react-router'
-import {CheckoutPage} from './pages/CheckoutPage'
+import {CheckoutPage} from './pages/checkout/CheckoutPage'
 import { Orders } from './pages/Orders'
 import { Tracking } from './pages/Tracking'
 
