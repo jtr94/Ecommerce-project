@@ -5,13 +5,18 @@ import { Header } from '../components/Header'
 
 export const HomePage = () => {
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState([])
   useEffect(() =>{
   axios("http://localhost:3000/api/products").then((response) =>
     setProducts(response.data),
-  );}, []) 
+  );
+  axios("http://localhost:3000/api/cart-items").then((response) =>
+    setCart(response.data),
+  )
+  }, []) 
   return (
     <>
-      <Header></Header>
+      <Header cart={cart}></Header>
       <div className="home-page">
         <div className="products-grid">
           {products.map((product) => {
@@ -36,7 +41,7 @@ export const HomePage = () => {
                 </div>
 
                 <div className="product-price">
-                  {`$${product.priceCents / 100}.png`}
+                  {`$${(product.priceCents / 100).toFixed(2)}`}
                 </div>
 
                 <div className="product-quantity-container">
