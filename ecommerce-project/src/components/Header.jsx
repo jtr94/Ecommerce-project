@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router';
 import './header.css';
 
-export const Header = ({cart}) => {
+export const Header = ({ cart }) => {
   let itemQuantity = 0
   cart.forEach(element => {
     itemQuantity += element.quantity
