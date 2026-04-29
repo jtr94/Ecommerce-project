@@ -10,14 +10,14 @@ import { NotFound } from './pages/not-found/NotFound'
 function App() {  
   const [cart, setCart] = useState([])
   useEffect(()=>{
-  axios("http://localhost:3000/api/cart-items").then((response) =>
+  axios("http://localhost:3000/api/cart-items?expand=product").then((response) =>
     setCart(response.data),
   )}, [])
 
   return (
     <Routes>
       <Route index element={<HomePage cart={cart}/>}/> 
-      <Route path='checkout' element={<CheckoutPage/>}/>
+      <Route path='checkout' element={<CheckoutPage cart={cart}/>}/>
       <Route path='orders' element={<Orders/>}/> 
       <Route path='tracking' element={<Tracking/>}/>  
       <Route path='*' element={<NotFound/>}/> 

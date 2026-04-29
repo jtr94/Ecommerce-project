@@ -6,7 +6,7 @@ export const Orders = () => {
   return (
     <>
       <title>Orders</title>
-      <Header></Header>
+      <Header/>
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
