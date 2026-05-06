@@ -8,9 +8,11 @@ import { OrdersGrid } from "./OrdersGrid";
 export const Orders = ({ cart }) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    axios("/api/orders?expand=products").then((response) =>
-      setOrders(response.data),
-    );
+    const fetchOrders = async()=> {
+      const response = await axios("/api/orders?expand=products")
+      setOrders(response.data)    
+    }
+    fetchOrders();
   }, []);
 
   return (
