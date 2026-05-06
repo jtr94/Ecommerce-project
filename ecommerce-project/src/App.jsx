@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import {HomePage} from './pages/HomePage'
+import {HomePage} from './pages/home/HomePage'
 import { Routes, Route } from 'react-router'
 import {CheckoutPage} from './pages/checkout/CheckoutPage'
-import { Orders } from './pages/Orders'
+import { Orders } from './pages/orders/Orders'
 import { Tracking } from './pages/Tracking'
 import { NotFound } from './pages/not-found/NotFound'
 
@@ -19,7 +19,7 @@ function App() {
       <Route index element={<HomePage cart={cart}/>}/> 
       <Route path='checkout' element={<CheckoutPage cart={cart}/>}/>
       <Route path='orders' element={<Orders cart={cart}/>}/> 
-      <Route path='tracking' element={<Tracking/>}/>  
+      <Route path='tracking' element={<Tracking cart={cart}/>}/>  
       <Route path='*' element={<NotFound/>}/> 
     </Routes>
     
