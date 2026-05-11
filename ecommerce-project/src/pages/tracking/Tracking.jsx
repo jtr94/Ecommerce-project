@@ -3,7 +3,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { useParams, Link } from "react-router";
 import './Tracking.css';
-import { Header } from "../components/Header";
+import { Header } from "../../components/Header";
 
 export const Tracking = ({ cart }) => {
   const params = useParams();
