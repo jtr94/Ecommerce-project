@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { DeliveryOptions } from "./DeliveryOptions";
 import { formatMoney } from "../../utils/money";
 
-export const OrderSummary = ({ deliveryOptions, cart }) => {
+export const OrderSummary = ({ deliveryOptions, cart, updateCart }) => {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 &&
@@ -18,7 +18,6 @@ export const OrderSummary = ({ deliveryOptions, cart }) => {
                   "dddd, MMMM D",
                 )}
               </div>
-
               <div className="cart-item-details-grid">
                 <img className="product-image" src={item.product.image} />
 
@@ -40,8 +39,25 @@ export const OrderSummary = ({ deliveryOptions, cart }) => {
                     </span>
                   </div>
                 </div>
-                <DeliveryOptions deliveryOptions={deliveryOptions} item={item}/>
+                {
+                  <div className="delivery-options">
+                    <div className="delivery-options-title">
+                      Choose a delivery option:
+                    </div>
+                    {deliveryOptions.map((deliveryOption) => {
+                      return (
+                        <DeliveryOptions
+                          key={deliveryOption.id}
+                          deliveryOption={deliveryOption}
+                          item={item}
+                          updateCart={updateCart}
+                        />
+                      );
+                    })}
+                  </div>
+                }
               </div>
+              );
             </div>
           );
         })}
