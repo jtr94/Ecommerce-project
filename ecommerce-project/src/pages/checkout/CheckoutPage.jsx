@@ -27,7 +27,7 @@ export const CheckoutPage = ({ cart, updateCart }) => {
         <div className="page-title">Review your order</div>
         <div className="checkout-grid">
           <OrderSummary cart={cart} deliveryOptions={deliveryOptions} updateCart={updateCart}/>
-          <PaymentSummary paymentSummary ={paymentSummary}/>
+          <PaymentSummary paymentSummary ={paymentSummary} updateCart={updateCart}/>
         </div>
       </div>
     </>
