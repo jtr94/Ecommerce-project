@@ -21,7 +21,7 @@ function App() {
     <Routes>
       <Route index element={<HomePage cart={cart} updateCart={updateCart}/>}/> 
       <Route path='checkout' element={<CheckoutPage cart={cart} updateCart={updateCart}/>}/>
-      <Route path='orders' element={<Orders cart={cart}/>}/> 
+      <Route path='orders' element={<Orders cart={cart} updateCart={updateCart}/>}/> 
       <Route path='tracking/:orderId/:productId' element={<Tracking cart={cart}/>}/>  
       <Route path='*' element={<NotFound/>}/> 
     </Routes>
