@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { formatMoney } from "../../utils/money";
 
-export const Product = ({product, updateCart}) => {
-    const [quantity, setQuantity] = useState(1);
+export const Product = ({ product, updateCart }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [checkmark, setCheckmark] = useState(false);
+  const addToCart = async () => {
+    await axios.post("http://localhost:3000/api/cart-items", {
+      productId: product.id,
+      quantity: quantity,
+    });
+    await updateCart();
+    setCheckmark(prev => !prev);
+    setTimeout(() => setCheckmark(prev => !prev) , 2000)
+  };
+  const selectQuantity = (e) => {
+    const selectedQuantity = Number(e.target.value);
+    setQuantity(selectedQuantity);
+  };
 
-    const addToCart = async () => {
-          await axios.post("http://localhost:3000/api/cart-items", {
-            productId: product.id,
-            quantity: quantity,
-          });
-          await updateCart();
-    }
-
-    const selectQuantity = (e) => {
-            const selectedQuantity = Number(e.target.value);
-            setQuantity(selectedQuantity);
-          }
-        
-  
   return (
     <div className="product-container">
       <div className="product-image-container">
@@ -40,10 +40,7 @@ export const Product = ({product, updateCart}) => {
       <div className="product-price">{formatMoney(product.priceCents)}</div>
 
       <div className="product-quantity-container">
-        <select
-          value={quantity}
-          onChange={selectQuantity}
-        >
+        <select value={quantity} onChange={selectQuantity}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -59,14 +56,14 @@ export const Product = ({product, updateCart}) => {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div
+        className="added-to-cart"
+        style={{ opacity: `${checkmark ? 1 : 0}` }}
+      >
         <img src="images/icons/checkmark.png" />
         Added
       </div>
-      <button
-        className="add-to-cart-button button-primary"
-        onClick={addToCart}
-      >
+      <button className="add-to-cart-button button-primary" onClick={addToCart}>
         Add to Cart
       </button>
     </div>
