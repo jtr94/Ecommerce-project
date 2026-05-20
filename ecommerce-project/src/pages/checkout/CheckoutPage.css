@@ -116,7 +116,7 @@
 }
 
 .checkout-page .product-quantity .link-primary {
-  margin-left: 3px;
+  margin-left: 5px;
 }
 
 @media (max-width: 1000px) {
@@ -208,4 +208,13 @@
 
   margin-top: 20px;
   margin-bottom: 19px;
+}
+
+.checkout-page .quantity-input {
+  width: 50px;
+  margin-left: 8px;
+  margin-right: 8px;
+  text-align: center;
+  border: solid 1px rgb(25, 135, 84);
+  border-radius: 5%;
 }
